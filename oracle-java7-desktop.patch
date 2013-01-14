@@ -1,0 +1,17 @@
+--- jdk1.6.0/sun_java.desktop.orig	2006-12-17 09:17:06.000000000 +0100
++++ jdk1.6.0/sun_java.desktop	2006-12-17 09:24:34.000000000 +0100
+@@ -13,10 +13,10 @@
+ #
+ [Desktop Entry]
+ Encoding=UTF-8
+-Name=Java
++Name=Java Control Panel
+ Comment=Java Control Panel
+-Exec=jcontrol
+-Icon=sun-jcontrol.png
++Exec=jcontrol
++Icon=sun_java.png
+ Terminal=false
+ Type=Application
+-Categories=Application;Settings;Java;X-Red-Hat-Base;X-Ximian-Settings;
++Categories=Settings;X-Sun-Supported;
