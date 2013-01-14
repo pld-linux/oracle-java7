@@ -16,7 +16,7 @@ Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
 Version:	1.7.0.11
-Release:	0.1
+Release:	1
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
 # See "LICENSE TO DISTRIBUTE SOFTWARE" section, which states you can
@@ -54,7 +54,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		javadir		%{_jvmdir}/%{javareldir}
 %define		jrereldir	%{javareldir}/jre
 %define		jredir		%{_jvmdir}/%{jrereldir}
-%define		jvmjardir	%{_jvmjardir}/%{name}-%{version}
+%define		jvmjardir	%{_jvmjardir}/java7-%{version}
 
 %ifarch %{ix86}
 %define		arch	i386
@@ -102,7 +102,7 @@ Summary:	Sun JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Sun JDK - środowisko programistyczne Javy dla Linuksa
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
-Requires:	jpackage-utils >= 0:1.6.6-14
+Requires:	jpackage-utils >= 0:1.7.5-4
 Provides:	jdk(%{name})
 
 %description jdk-base
@@ -132,7 +132,7 @@ Summary(pl.UTF-8):	Sun JRE - środowisko uruchomieniowe Javy dla Linuksa
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
 Requires:	%{name}-tools = %{version}-%{release}
-Requires:	jpackage-utils >= 0:1.6.6-14
+Requires:	jpackage-utils >= 0:1.7.5-4
 Suggests:	%{name}-jre-X11
 Provides:	java
 Provides:	java(ClassDataVersion) = %{_classdataversion}
@@ -176,7 +176,7 @@ systemie.
 Summary:	Sun JRE (Java Runtime Environment) for Linux
 Summary(pl.UTF-8):	Sun JRE - środowisko uruchomieniowe Javy dla Linuksa
 Group:		Development/Languages/Java
-Requires:	jpackage-utils >= 0:1.6.6-14
+Requires:	jpackage-utils >= 0:1.7.5-4
 Provides:	jre(%{name})
 
 %description jre-base
@@ -871,6 +871,7 @@ fi
 %lang(it) %{_datadir}/locale/it/LC_MESSAGES/sunw_java_plugin.mo
 %lang(ja) %{_datadir}/locale/ja/LC_MESSAGES/sunw_java_plugin.mo
 %lang(ko) %{_datadir}/locale/ko/LC_MESSAGES/sunw_java_plugin.mo
+%lang(pt_BR) %{_datadir}/locale/pt_BR/LC_MESSAGES/sunw_java_plugin.mo
 %lang(sv) %{_datadir}/locale/sv/LC_MESSAGES/sunw_java_plugin.mo
 %lang(zh_HK) %{_datadir}/locale/zh_HK/LC_MESSAGES/sunw_java_plugin.mo
 %lang(zh_CN) %{_datadir}/locale/zh_CN/LC_MESSAGES/sunw_java_plugin.mo
