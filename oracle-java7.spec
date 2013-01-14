@@ -1,21 +1,3 @@
-# TODO
-#  /usr/lib64/jvm/java7-1.7.0.11/bin/java-rmi.cgi
-#  /usr/lib64/jvm/java7-1.7.0.11/bin/javafxpackager
-#  /usr/lib64/jvm/java7-1.7.0.11/bin/javaws
-#  /usr/lib64/jvm/java7-1.7.0.11/bin/jcmd
-#  /usr/lib64/jvm/java7-1.7.0.11/jre/bin/javaws
-#  /usr/lib64/jvm/java7-1.7.0.11/jre/lib/amd64/fxavcodecplugin-52.so
-#  /usr/lib64/jvm/java7-1.7.0.11/jre/lib/amd64/fxavcodecplugin-53.so
-#  /usr/lib64/jvm/java7-1.7.0.11/jre/lib/amd64/fxplugins.so
-#  /usr/lib64/jvm/java7-1.7.0.11/jre/lib/currency.data
-#  /usr/lib64/jvm/java7-1.7.0.11/jre/lib/locale/pt_BR/LC_MESSAGES/sunw_java_plugin.mo
-#  /usr/share/locale/pt_BR/LC_MESSAGES/sunw_java_plugin.mo
-#  /usr/share/man/ja/man1/javafxpackager.1.gz
-#  /usr/share/man/ja/man1/javaws.1.gz
-#  /usr/share/man/ja/man1/jcmd.1.gz
-#  /usr/share/man/man1/javafxpackager.1.gz
-#  /usr/share/man/man1/jcmd.1.gz
-#
 # NOTE
 #  - early access packages downloadable: http://jdk6.java.net/download.html
 #  - sample/demo available as separate download, licensesd with Oracle BSD license
@@ -450,7 +432,7 @@ for i in java keytool orbd policytool \
 done
 
 for i in appletviewer extcheck idlj jar jarsigner \
-	javac javadoc javah javap jconsole jdb jhat jinfo jmap jps \
+	javac javadoc javafxpackager javah javap jcmd jconsole jdb jhat jinfo jmap jps \
 	jrunscript jsadebugd jstack jstat jstatd native2ascii rmic serialver \
 	jvisualvm schemagen wsgen wsimport xjc apt; do
 	[ -f $RPM_BUILD_ROOT%{javadir}/bin/$i ] || exit 1
@@ -614,8 +596,10 @@ fi
 %attr(755,root,root) %{_bindir}/jarsigner
 %attr(755,root,root) %{_bindir}/javac
 %attr(755,root,root) %{_bindir}/javadoc
+%attr(755,root,root) %{_bindir}/javafxpackager
 %attr(755,root,root) %{_bindir}/javah
 %attr(755,root,root) %{_bindir}/javap
+%attr(755,root,root) %{_bindir}/jcmd
 %attr(755,root,root) %{_bindir}/jconsole
 %attr(755,root,root) %{_bindir}/jdb
 %attr(755,root,root) %{_bindir}/jhat
@@ -639,8 +623,10 @@ fi
 %{_mandir}/man1/jarsigner.1*
 %{_mandir}/man1/javac.1*
 %{_mandir}/man1/javadoc.1*
+%{_mandir}/man1/javafxpackager.1*
 %{_mandir}/man1/javah.1*
 %{_mandir}/man1/javap.1*
+%{_mandir}/man1/jcmd.1*
 %{_mandir}/man1/jconsole.1*
 %{_mandir}/man1/jdb.1*
 %{_mandir}/man1/jhat.1*
@@ -664,8 +650,10 @@ fi
 %lang(ja) %{_mandir}/ja/man1/jarsigner.1*
 %lang(ja) %{_mandir}/ja/man1/javac.1*
 %lang(ja) %{_mandir}/ja/man1/javadoc.1*
+%lang(ja) %{_mandir}/ja/man1/javafxpackager.1*
 %lang(ja) %{_mandir}/ja/man1/javah.1*
 %lang(ja) %{_mandir}/ja/man1/javap.1*
+%lang(ja) %{_mandir}/ja/man1/jcmd.1*
 %lang(ja) %{_mandir}/ja/man1/jconsole.1*
 %lang(ja) %{_mandir}/ja/man1/jdb.1*
 %lang(ja) %{_mandir}/ja/man1/jhat.1*
@@ -696,8 +684,10 @@ fi
 %attr(755,root,root) %{javadir}/bin/jarsigner
 %attr(755,root,root) %{javadir}/bin/javac
 %attr(755,root,root) %{javadir}/bin/javadoc
+%attr(755,root,root) %{javadir}/bin/javafxpackager
 %attr(755,root,root) %{javadir}/bin/javah
 %attr(755,root,root) %{javadir}/bin/javap
+%attr(755,root,root) %{javadir}/bin/jcmd
 %attr(755,root,root) %{javadir}/bin/jconsole
 %attr(755,root,root) %{javadir}/bin/jdb
 %attr(755,root,root) %{javadir}/bin/jhat
@@ -794,6 +784,7 @@ fi
 %dir %{jredir}/lib
 %{jredir}/lib/applet
 %{jredir}/lib/cmm
+%{jredir}/lib/currency.data
 %{jredir}/lib/ext
 
 %dir %{jredir}/lib/%{arch}
@@ -810,6 +801,8 @@ fi
 %attr(755,root,root) %{jredir}/lib/%{arch}/headless/libmawt.so
 
 %attr(755,root,root) %{jredir}/lib/%{arch}/lib*.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/fxavcodecplugin-*.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/fxplugins.so
 %exclude %{jredir}/lib/%{arch}/libjavaplugin*.so
 %exclude %{jredir}/lib/%{arch}/libJdbcOdbc.so
 %exclude %{jredir}/lib/%{arch}/libjsoundalsa.so
@@ -871,9 +864,7 @@ fi
 %{_mandir}/man1/policytool.1*
 %lang(ja) %{_mandir}/ja/man1/policytool.1*
 %{_mandir}/man1/javaws.1*
-%ifarch %{ix86}
 %lang(ja) %{_mandir}/ja/man1/javaws.1*
-%endif
 %lang(de) %{_datadir}/locale/de/LC_MESSAGES/sunw_java_plugin.mo
 %lang(es) %{_datadir}/locale/es/LC_MESSAGES/sunw_java_plugin.mo
 %lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/sunw_java_plugin.mo
@@ -892,7 +883,9 @@ fi
 %attr(755,root,root) %{jredir}/bin/jcontrol
 %attr(755,root,root) %{javadir}/bin/ControlPanel
 %attr(755,root,root) %{javadir}/bin/java_vm
+%attr(755,root,root) %{jredir}/bin/javaws
 %attr(755,root,root) %{javadir}/bin/jcontrol
+%attr(755,root,root) %{javadir}/bin/javaws
 %{jredir}/lib/fonts
 %{jredir}/lib/oblique-fonts
 %dir %{jredir}/lib/%{arch}/xawt
