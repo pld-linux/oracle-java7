@@ -2,6 +2,13 @@
 #  - early access packages downloadable: http://jdk6.java.net/download.html
 #  - sample/demo available as separate download, licensesd with Oracle BSD license
 #
+#       /usr/lib/jvm/java7-1.7.0.11/jre/lib/i386/libjavaplugin_jni.so
+#       /usr/lib/jvm/java7-1.7.0.11/jre/lib/i386/libjavaplugin_nscp.so
+#       /usr/lib/jvm/java7-1.7.0.11/jre/lib/i386/libjavaplugin_nscp_gcc29.so
+#       /usr/lib/jvm/java7-1.7.0.11/jre/lib/i386/libjavaplugin_oji.so
+#       /usr/lib/jvm/java7-1.7.0.11/jre/plugin/desktop/sun_java.desktop
+#       /usr/lib/jvm/java7-1.7.0.11/jre/plugin/desktop/sun_java.png
+#
 # Conditional build:
 %bcond_without	tests		# build without tests
 
@@ -959,7 +966,9 @@ fi
 %dir %{jredir}/plugin
 %dir %{jredir}/plugin/%{arch}
 %dir %{jredir}/plugin/%{arch}/ns7
+%ifarch %{x8664}
 %dir %{jredir}/plugin/%{arch}/ns7-gcc29
+%endif
 # XXX: duplicate
 %attr(755,root,root) %{jredir}/lib/%{arch}/libjavaplugin*.so
 %attr(755,root,root) %{jredir}/plugin/%{arch}/*/libjavaplugin_oji.so
