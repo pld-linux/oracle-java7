@@ -14,7 +14,7 @@
 
 # disable file duplicate packaging error
 %define		_duplicate_files_terminate_build   0
-%define		src_ver	7u11
+%define		src_ver	7u13
 %define		sub_ver	b21
 %define		dir_ver	%(echo %{version} | sed 's/\\.\\(..\\)$/_\\1/')
 # class data version seen with file(1) that this jvm is able to load
@@ -22,7 +22,7 @@
 Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
-Version:	1.7.0.11
+Version:	1.7.0.13
 Release:	1
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
@@ -32,9 +32,9 @@ Group:		Development/Languages/Java
 # Download URL (requires JavaScript and interactive license agreement):
 # http://www.oracle.com/technetwork/java/javase/downloads/index.html
 Source0:	http://download.oracle.com/otn-pub/java/jdk/%{src_ver}-%{sub_ver}/jdk-%{src_ver}-linux-i586.tar.gz
-# Source0-md5:	22239a786477a7d21bc8a835455ca24a
+# Source0-md5:	2e129b77f7c2640dde08c267ed000c49
 Source1:	http://download.oracle.com/otn-pub/java/jdk/%{src_ver}-%{sub_ver}/jdk-%{src_ver}-linux-x64.tar.gz
-# Source1-md5:	d8f65419fa65f179382ae310237fd1f4
+# Source1-md5:	5286b7e752fb8814d85124cb623ff045
 Source2:	Test.java
 Source3:	Test.class
 Patch0:		%{name}-desktop.patch
@@ -53,7 +53,7 @@ Obsoletes:	ibm-java
 Obsoletes:	java-blackdown
 Obsoletes:	jdk
 Obsoletes:	kaffe
-Conflicts:	netscape4-plugin-java7
+Conflicts:	netscape4-plugin-java
 ExclusiveArch:	i586 i686 pentium3 pentium4 athlon %{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -125,7 +125,6 @@ Group:		Development/Languages/Java
 Requires:	%{name}-jre = %{version}-%{release}
 Requires:	%{name}-jre-base = %{version}-%{release}
 Provides:	%{name}-jdbc
-Obsoletes:	java7-jdbc
 
 %description jre-jdbc
 This package contains JDBC files for Sun Java.
@@ -234,7 +233,6 @@ Summary(pl.UTF-8):	Moduł JRE do obsługi dźwięku poprzez ALSA
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
 Provides:	%{name}-alsa
-Obsoletes:	java7-alsa
 
 %description jre-alsa
 JRE module for ALSA sound support.
@@ -300,25 +298,25 @@ Group:		Development/Languages/Java
 Requires:	%{name}-jre-base-X11 = %{version}-%{release}
 Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
-Provides:	java7-mozilla-plugin
-Provides:	mozilla-firefox-plugin-java7
-Provides:	mozilla-plugin-java7
+Provides:	java-mozilla-plugin
+Provides:	mozilla-firefox-plugin-java
+Provides:	mozilla-plugin-java
 Obsoletes:	blackdown-java-sdk-mozilla-plugin
-Obsoletes:	browser-plugin-java7-ng
+Obsoletes:	browser-plugin-java-ng
 Obsoletes:	java-blackdown-mozilla-plugin
-Obsoletes:	java7-moz-plugin
-Obsoletes:	java7-mozilla-plugin
+Obsoletes:	java-moz-plugin
+Obsoletes:	java-mozilla-plugin
 Obsoletes:	jre-mozilla-plugin
-Obsoletes:	mozilla-firefox-plugin-gcc2-java7
-Obsoletes:	mozilla-firefox-plugin-gcc3-java7
+Obsoletes:	mozilla-firefox-plugin-gcc2-java
+Obsoletes:	mozilla-firefox-plugin-gcc3-java
 Obsoletes:	mozilla-firefox-plugin-java-blackdown
-Obsoletes:	mozilla-firefox-plugin-java7
+Obsoletes:	mozilla-firefox-plugin-java
 Obsoletes:	mozilla-plugin-blackdown-java-sdk
-Obsoletes:	mozilla-plugin-gcc2-java7
-Obsoletes:	mozilla-plugin-gcc3-java7
-Obsoletes:	mozilla-plugin-gcc32-java7
+Obsoletes:	mozilla-plugin-gcc2-java
+Obsoletes:	mozilla-plugin-gcc3-java
+Obsoletes:	mozilla-plugin-gcc32-java
 Obsoletes:	mozilla-plugin-java-blackdown
-Obsoletes:	mozilla-plugin-java7
+Obsoletes:	mozilla-plugin-java
 
 %description -n browser-plugin-%{name}
 Java plugin for WWW browsers.
@@ -333,25 +331,25 @@ Group:		Development/Languages/Java
 Requires:	%{name}-jre-base-X11 = %{version}-%{release}
 Requires:	browser-plugins >= 2.0
 Requires:	browser-plugins(%{_target_base_arch})
-Provides:	java7-mozilla-plugin
-Provides:	mozilla-firefox-plugin-java7
-Provides:	mozilla-plugin-java7
+Provides:	java-mozilla-plugin
+Provides:	mozilla-firefox-plugin-java
+Provides:	mozilla-plugin-java
 Obsoletes:	blackdown-java-sdk-mozilla-plugin
-Obsoletes:	browser-plugin-java7
+Obsoletes:	browser-plugin-java
 Obsoletes:	java-blackdown-mozilla-plugin
-Obsoletes:	java7-moz-plugin
-Obsoletes:	java7-mozilla-plugin
+Obsoletes:	java-moz-plugin
+Obsoletes:	java-mozilla-plugin
 Obsoletes:	jre-mozilla-plugin
-Obsoletes:	mozilla-firefox-plugin-gcc2-java7
-Obsoletes:	mozilla-firefox-plugin-gcc3-java7
+Obsoletes:	mozilla-firefox-plugin-gcc2-java
+Obsoletes:	mozilla-firefox-plugin-gcc3-java
 Obsoletes:	mozilla-firefox-plugin-java-blackdown
-Obsoletes:	mozilla-firefox-plugin-java7
+Obsoletes:	mozilla-firefox-plugin-java
 Obsoletes:	mozilla-plugin-blackdown-java-sdk
-Obsoletes:	mozilla-plugin-gcc2-java7
-Obsoletes:	mozilla-plugin-gcc3-java7
-Obsoletes:	mozilla-plugin-gcc32-java7
+Obsoletes:	mozilla-plugin-gcc2-java
+Obsoletes:	mozilla-plugin-gcc3-java
+Obsoletes:	mozilla-plugin-gcc32-java
 Obsoletes:	mozilla-plugin-java-blackdown
-Obsoletes:	mozilla-plugin-java7
+Obsoletes:	mozilla-plugin-java
 
 %description -n browser-plugin-%{name}-ng
 Next-Generation Java plugin for WWW browsers. Works only with
