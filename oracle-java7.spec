@@ -32,9 +32,9 @@ Group:		Development/Languages/Java
 # Download URL (requires JavaScript and interactive license agreement):
 # http://www.oracle.com/technetwork/java/javase/downloads/index.html
 Source0:	jdk-%{src_ver}-linux-i586.tar.gz
-# Source0-md5:	fc0241e1a3e243602698ac700abc94e9
+# Source0-md5:	23176d0ebf9dedd21e3150b4bb0ee776
 Source1:	jdk-%{src_ver}-linux-x64.tar.gz
-# Source1-md5:	3ceef66377b6d87144b802960f5e715b
+# Source1-md5:	83ba05e260813f7a9140b76e3d37ea33
 Source2:	Test.java
 Source3:	Test.class
 Patch0:		%{name}-desktop.patch
