@@ -1,4 +1,5 @@
 # NOTE
+#  - TODO: unpacked files 
 #  - early access packages downloadable: http://jdk6.java.net/download.html
 #  - sample/demo available as separate download, licensesd with Oracle BSD license
 #
@@ -14,16 +15,16 @@
 
 # disable file duplicate packaging error
 %define		_duplicate_files_terminate_build   0
-%define		src_ver	7u25
-%define		sub_ver	b25
+%define		src_ver	7u40
+%define		sub_ver	b40
 %define		dir_ver	%(echo %{version} | sed 's/\\.\\(..\\)$/_\\1/')
 # class data version seen with file(1) that this jvm is able to load
 %define		_classdataversion 51.0
 Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
-Version:	1.7.0.25
-Release:	1
+Version:	1.7.0.40
+Release:	0.1
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
 # See "LICENSE TO DISTRIBUTE SOFTWARE" section, which states you can
@@ -32,9 +33,9 @@ Group:		Development/Languages/Java
 # Download URL (requires JavaScript and interactive license agreement):
 # http://www.oracle.com/technetwork/java/javase/downloads/index.html
 Source0:	jdk-%{src_ver}-linux-i586.tar.gz
-# Source0-md5:	23176d0ebf9dedd21e3150b4bb0ee776
+# Source0-md5:	0079cecc8c4d0f088ace5d0ea99d0c5c
 Source1:	jdk-%{src_ver}-linux-x64.tar.gz
-# Source1-md5:	83ba05e260813f7a9140b76e3d37ea33
+# Source1-md5:	511ea34e4a42955bc03c28afa4b8f6cf
 Source2:	Test.java
 Source3:	Test.class
 Patch0:		%{name}-desktop.patch
@@ -849,7 +850,6 @@ fi
 %{jredir}/lib/fontconfig.Turbo.properties.src
 %{jredir}/lib/fontconfig.bfc
 %{jredir}/lib/fontconfig.properties.src
-%{jredir}/lib/servicetag
 %dir %{jredir}/lib/management
 %{jredir}/lib/management/jmxremote.access
 %{jredir}/lib/management/jmxremote.password.template
