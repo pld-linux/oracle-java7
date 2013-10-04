@@ -24,7 +24,7 @@ Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
 Version:	1.7.0.40
-Release:	0.1
+Release:	1
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
 # See "LICENSE TO DISTRIBUTE SOFTWARE" section, which states you can
@@ -519,6 +519,22 @@ ln -s java7-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/java
 ln -s java7-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/jre
 ln -s java7-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/jsse
 
+# ugly hack for fxavcodecplugin-55.so
+if [ -e $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so ]; then
+	echo "fxavcodecplugin-55.so already exists, no need for hack" >&2
+	exit 1
+fi
+cp -a $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-53.so \
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
+perl -pi -e 's#.so.53#.so.55#g' \
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
+perl -pi -e 's#LIBAVFORMAT_53#LIBAVFORMAT_55#g' \
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
+perl -pi -e 's#LIBAVCODEC_53#LIBAVCODEC_55#g' \
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
+rm $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-52.so
+rm $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-53.so
+
 # modify RPATH so that javac and friends are able to work when /proc is not
 # mounted and we can't append to RPATH (for example to keep previous lookup
 # path) as RPATH can't be longer than original
@@ -807,7 +823,7 @@ fi
 %attr(755,root,root) %{jredir}/lib/%{arch}/headless/libmawt.so
 
 %attr(755,root,root) %{jredir}/lib/%{arch}/lib*.so
-%attr(755,root,root) %{jredir}/lib/%{arch}/fxavcodecplugin-*.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/fxavcodecplugin-55.so
 %attr(755,root,root) %{jredir}/lib/%{arch}/fxplugins.so
 %exclude %{jredir}/lib/%{arch}/libjavaplugin*.so
 %exclude %{jredir}/lib/%{arch}/libJdbcOdbc.so
