@@ -15,15 +15,15 @@
 
 # disable file duplicate packaging error
 %define		_duplicate_files_terminate_build   0
-%define		src_ver	7u40
-%define		sub_ver	b40
+%define		src_ver	7u45
+%define		sub_ver	b45
 %define		dir_ver	%(echo %{version} | sed 's/\\.\\(..\\)$/_\\1/')
 # class data version seen with file(1) that this jvm is able to load
 %define		_classdataversion 51.0
 Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
-Version:	1.7.0.40
+Version:	1.7.0.45
 Release:	1
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
@@ -33,9 +33,9 @@ Group:		Development/Languages/Java
 # Download URL (requires JavaScript and interactive license agreement):
 # http://www.oracle.com/technetwork/java/javase/downloads/index.html
 Source0:	jdk-%{src_ver}-linux-i586.tar.gz
-# Source0-md5:	0079cecc8c4d0f088ace5d0ea99d0c5c
+# Source0-md5:	66b47e77d963c5dd652f0c5d3b03cb52
 Source1:	jdk-%{src_ver}-linux-x64.tar.gz
-# Source1-md5:	511ea34e4a42955bc03c28afa4b8f6cf
+# Source1-md5:	bea330fcbcff77d31878f21753e09b30
 Source2:	Test.java
 Source3:	Test.class
 Patch0:		%{name}-desktop.patch
@@ -549,7 +549,7 @@ chrpath -d $RPM_BUILD_ROOT%{jredir}/bin/unpack200
 fixrpath() {
 	execlist=$(find $RPM_BUILD_ROOT%{javadir} -type f -perm +1 | xargs file | awk -F: '/ELF.*executable/{print $1}')
 	for f in $execlist; do
-		rpath=$(chrpath -l $f | awk '/RPATH=/ { gsub(/.*RPATH=/,""); gsub(/:/," "); print $0 }')
+		rpath=$(chrpath -l $f | awk '/(R|RUN)PATH=/ { gsub(/.*RPATH=/,""); gsub(/.*RUNPATH=/,""); gsub(/:/," "); print $0 }')
 		[ "$rpath" ] || continue
 
 		# file
@@ -571,7 +571,13 @@ fixrpath() {
 				new=${new}${new:+:}$t
 			fi
 		done
-		chrpath -r ${new} $f
+		# leave old one if new is too long
+		if [ ${#new} -gt ${#rpath} ]; then
+			echo "WARNING: New ($new) rpath is too long. Leaving old ($rpath) one." >&2
+			new=$rpath
+		else
+			chrpath -r ${new} $f
+		fi
 	done
 }
 
