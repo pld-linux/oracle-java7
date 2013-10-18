@@ -574,7 +574,6 @@ fixrpath() {
 		# leave old one if new is too long
 		if [ ${#new} -gt ${#rpath} ]; then
 			echo "WARNING: New ($new) rpath is too long. Leaving old ($rpath) one." >&2
-			new=$rpath
 		else
 			chrpath -r ${new} $f
 		fi
