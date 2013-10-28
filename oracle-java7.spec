@@ -24,7 +24,7 @@ Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
 Version:	1.7.0.45
-Release:	1
+Release:	2
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
 # See "LICENSE TO DISTRIBUTE SOFTWARE" section, which states you can
@@ -822,6 +822,9 @@ fi
 %dir %{jredir}/lib/%{arch}/client
 %attr(755,root,root) %{jredir}/lib/%{arch}/client/*
 %endif
+%dir %{javadir}/lib/%{arch}
+%dir %{javadir}/lib/%{arch}/jli
+%attr(755,root,root) %{javadir}/lib/%{arch}/jli/libjli.so
 %dir %{jredir}/lib/%{arch}/jli
 %attr(755,root,root) %{jredir}/lib/%{arch}/jli/libjli.so
 %dir %{jredir}/lib/%{arch}/headless
