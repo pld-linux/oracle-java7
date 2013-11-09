@@ -24,7 +24,7 @@ Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
 Version:	1.7.0.45
-Release:	2
+Release:	3
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
 # See "LICENSE TO DISTRIBUTE SOFTWARE" section, which states you can
@@ -240,6 +240,20 @@ JRE module for ALSA sound support.
 
 %description jre-alsa -l pl.UTF-8
 Moduł JRE do obsługi dźwięku poprzez ALSA.
+
+%package javafx
+Summary:	Sun JRE (Java Runtime Environment) for Linux - JavaFX runtime binaries
+Group:		Development/Languages/Java
+Requires:	%{name}-jre-base = %{version}-%{release}
+
+%description javafx
+JavaFX is the next step in the evolution of Java as a rich client
+platform. It is designed to provide a lightweight,
+hardware-accelerated Java UI platform for enterprise business
+applications. With JavaFX, developers can preserve existing
+investments by reusing Java libraries in their applications. They can
+even access native system capabilities, or seamlessly connect to
+server-based middleware applications.
 
 %package visualvm
 Summary:	VisualVM - a tool to monitor and troubleshoot Java applications
@@ -831,13 +845,17 @@ fi
 %attr(755,root,root) %{jredir}/lib/%{arch}/headless/libmawt.so
 
 %attr(755,root,root) %{jredir}/lib/%{arch}/lib*.so
-%attr(755,root,root) %{jredir}/lib/%{arch}/fxavcodecplugin-55.so
-%attr(755,root,root) %{jredir}/lib/%{arch}/fxplugins.so
 %exclude %{jredir}/lib/%{arch}/libjavaplugin*.so
 %exclude %{jredir}/lib/%{arch}/libJdbcOdbc.so
 %exclude %{jredir}/lib/%{arch}/libjsoundalsa.so
 %exclude %{jredir}/lib/%{arch}/libnpjp2.so
 %exclude %{jredir}/lib/%{arch}/libsplashscreen.so
+%exclude %{jredir}/lib/%{arch}/libglass.so
+%exclude %{jredir}/lib/%{arch}/libgstreamer-lite.so
+%exclude %{jredir}/lib/%{arch}/libgstplugins-lite.so
+%exclude %{jredir}/lib/%{arch}/libjavafx-*.so
+%exclude %{jredir}/lib/%{arch}/libjfx*.so
+%exclude %{jredir}/lib/%{arch}/libprism-es2.so
 
 %{jredir}/lib/deploy
 %{jredir}/lib/desktop
@@ -850,7 +868,9 @@ fi
 %verify(not md5 mtime size) %config(noreplace) %{jredir}/lib/security/cacerts
 %{jredir}/lib/zi
 %{jredir}/lib/*.jar
+%exclude %{jredir}/lib/jfxrt.jar
 %{jredir}/lib/*.properties
+%exclude %{jredir}/lib/javafx.properties
 %lang(ja) %{jredir}/lib/*.properties.ja
 %dir %{jvmjardir}
 %{jvmjardir}/activation.jar
@@ -938,6 +958,19 @@ fi
 %files jre-alsa
 %defattr(644,root,root,755)
 %attr(755,root,root) %{jredir}/lib/%{arch}/libjsoundalsa.so
+
+%files javafx
+%defattr(644,root,root,755)
+%attr(755,root,root) %{jredir}/lib/%{arch}/fxavcodecplugin-55.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/fxplugins.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/libglass.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/libgstplugins-lite.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/libgstreamer-lite.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/libjavafx-*.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/libjfx*.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/libprism-es2.so
+%{jredir}/lib/javafx.properties
+%{jredir}/lib/jfxrt.jar
 
 %files visualvm
 %defattr(644,root,root,755)
