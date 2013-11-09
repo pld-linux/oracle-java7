@@ -82,32 +82,32 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_enable_debug_packages 0
 
 %description
-This package symlinks Sun Java development tools provided by
-java7-jdk-base to system-wide directories like /usr/bin, making Sun
+This package symlinks Oracle Java development tools provided by
+java7-jdk-base to system-wide directories like /usr/bin, making Oracle
 Java the default JDK.
 
 %description -l pl.UTF-8
 Ten pakiet tworzy symboliczne dowiązania do narzędzi programistycznych
-uruchomieniowego Javy firmy Sun, dostarczanych przez pakiet
+uruchomieniowego Javy firmy Oracle, dostarczanych przez pakiet
 java7-jdk-base, w standardowych systemowych ścieżkach takich jak
-/usr/bin, sprawiając tym samym, że Sun Java staje się domyślnym JDK w
-systemie.
+/usr/bin, sprawiając tym samym, że Oracle Java staje się domyślnym JDK
+w systemie.
 
 %package appletviewer
-Summary:	Java applet viewer from Sun Java
-Summary(pl.UTF-8):	Przeglądarka appletów Javy Suna
+Summary:	Java applet viewer from Oracle Java
+Summary(pl.UTF-8):	Przeglądarka appletów Javy Oracle
 Group:		Development/Languages/Java
 Requires:	%{name}-jdk-base = %{version}-%{release}
 
 %description appletviewer
-This package contains applet viewer for Sun Java.
+This package contains applet viewer for Oracle Java.
 
 %description appletviewer -l pl.UTF-8
-Ten pakiet zawiera przeglądarkę appletów dla Javy Suna.
+Ten pakiet zawiera przeglądarkę appletów dla Javy Oracle.
 
 %package jdk-base
-Summary:	Sun JDK (Java Development Kit) for Linux
-Summary(pl.UTF-8):	Sun JDK - środowisko programistyczne Javy dla Linuksa
+Summary:	Oracle JDK (Java Development Kit) for Linux
+Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
 Requires:	jpackage-utils >= 0:1.7.5-4
@@ -120,22 +120,22 @@ Java Development Kit for Linux.
 Środowisko programistyczne Javy dla Linuksa.
 
 %package jre-jdbc
-Summary:	JDBC files for Sun Java
-Summary(pl.UTF-8):	Pliki JDBC dla Javy Suna
+Summary:	JDBC files for Oracle Java
+Summary(pl.UTF-8):	Pliki JDBC dla Javy Oracle
 Group:		Development/Languages/Java
 Requires:	%{name}-jre = %{version}-%{release}
 Requires:	%{name}-jre-base = %{version}-%{release}
 Provides:	%{name}-jdbc
 
 %description jre-jdbc
-This package contains JDBC files for Sun Java.
+This package contains JDBC files for Oracle Java.
 
 %description jre-jdbc -l pl.UTF-8
-Ten pakiet zawiera pliki JDBC dla Javy Suna.
+Ten pakiet zawiera pliki JDBC dla Javy Oracle.
 
 %package jre
-Summary:	Sun JRE (Java Runtime Environment) for Linux
-Summary(pl.UTF-8):	Sun JRE - środowisko uruchomieniowe Javy dla Linuksa
+Summary:	Oracle JRE (Java Runtime Environment) for Linux
+Summary(pl.UTF-8):	Oracle JRE - środowisko uruchomieniowe Javy dla Linuksa
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
 Requires:	%{name}-tools = %{version}-%{release}
@@ -168,20 +168,20 @@ Obsoletes:	java-blackdown-jre
 Obsoletes:	jre
 
 %description jre
-This package symlinks Sun Java runtime environment tools provided by
-java7-jre-base to system-wide directories like /usr/bin, making Sun
-Java the default JRE.
+This package symlinks Oracle Java runtime environment tools provided
+by java7-jre-base to system-wide directories like /usr/bin, making
+Oracle Java the default JRE.
 
 %description jre -l pl.UTF-8
 Ten pakiet tworzy symboliczne dowiązania do narzędzi środowiska
-uruchomieniowego Javy firmy Sun, dostarczanych przez pakiet
+uruchomieniowego Javy firmy Oracle, dostarczanych przez pakiet
 java7-jre-base, w standardowych systemowych ścieżkach takich jak
-/usr/bin, sprawiając tym samym, że Sun Java staje się domyślnym JRE w
-systemie.
+/usr/bin, sprawiając tym samym, że Oracle Java staje się domyślnym JRE
+w systemie.
 
 %package jre-base
-Summary:	Sun JRE (Java Runtime Environment) for Linux
-Summary(pl.UTF-8):	Sun JRE - środowisko uruchomieniowe Javy dla Linuksa
+Summary:	Oracle JRE (Java Runtime Environment) for Linux
+Summary(pl.UTF-8):	Oracle JRE - środowisko uruchomieniowe Javy dla Linuksa
 Group:		Development/Languages/Java
 Requires:	jpackage-utils >= 0:1.7.5-4
 Provides:	jre(%{name})
@@ -195,8 +195,8 @@ compontents.
 elementów związanych ze środowiskiem X11.
 
 %package jre-X11
-Summary:	Sun JRE (Java Runtime Environment) for Linux, X11 related parts
-Summary(pl.UTF-8):	Sun JRE - środowisko uruchomieniowe Javy dla Linuksa, części korzystające z X11
+Summary:	Oracle JRE (Java Runtime Environment) for Linux, X11 related parts
+Summary(pl.UTF-8):	Oracle JRE - środowisko uruchomieniowe Javy dla Linuksa, części korzystające z X11
 Group:		Development/Languages/Java
 Requires:	%{name}-jre = %{version}-%{release}
 Requires:	%{name}-jre-base = %{version}-%{release}
@@ -205,19 +205,19 @@ Provides:	javaws = %{version}
 Provides:	jre-X11 = %{version}
 
 %description jre-X11
-This package symlinks Sun Java X11 libraries provided by
+This package symlinks Oracle Java X11 libraries provided by
 java7-jre-base-X11 to system-wide directories like /usr/bin, making
-Sun Java the default JRE-X11.
+Oracle Java the default JRE-X11.
 
 %description jre-X11 -l pl.UTF-8
 Ten pakiet tworzy symboliczne dowiązania do narzędzi X11 Javy firmy
-Sun, dostarczanych przez pakiet java7-jre-base-X11, w standardowych
+Oracle, dostarczanych przez pakiet java7-jre-base-X11, w standardowych
 systemowych ścieżkach takich jak /usr/bin, sprawiając tym samym, że
-Sun Java staje się domyślnym JRE-X11 w systemie.
+Oracle Java staje się domyślnym JRE-X11 w systemie.
 
 %package jre-base-X11
-Summary:	Sun JRE (Java Runtime Environment) for Linux, X11 related parts
-Summary(pl.UTF-8):	Sun JRE - środowisko uruchomieniowe Javy dla Linuksa, części korzystające z X11
+Summary:	Oracle JRE (Java Runtime Environment) for Linux, X11 related parts
+Summary(pl.UTF-8):	Oracle JRE - środowisko uruchomieniowe Javy dla Linuksa, części korzystające z X11
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
 
@@ -242,7 +242,7 @@ JRE module for ALSA sound support.
 Moduł JRE do obsługi dźwięku poprzez ALSA.
 
 %package javafx
-Summary:	Sun JRE (Java Runtime Environment) for Linux - JavaFX runtime binaries
+Summary:	Oracle JRE (Java Runtime Environment) for Linux - JavaFX runtime binaries
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
 
@@ -394,11 +394,11 @@ Sources for the standard Java library.
 %endif
 
 # patch only copy of the desktop file, leave original unchanged
-cp jre/plugin/desktop/sun_java.desktop .
+cp -p jre/plugin/desktop/sun_java.desktop .
 %patch0 -p1
 
-cp %{SOURCE2} Test.java
-cp %{SOURCE3} Test.class
+cp -p %{SOURCE2} Test.java
+cp -p %{SOURCE3} Test.class
 
 %build
 %if %{with tests}
