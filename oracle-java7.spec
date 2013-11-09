@@ -1,5 +1,5 @@
 # NOTE
-#  - TODO: unpacked files 
+#  - TODO: unpacked files
 #  - early access packages downloadable: http://jdk6.java.net/download.html
 #  - sample/demo available as separate download, licensesd with Oracle BSD license
 #
@@ -83,8 +83,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This package symlinks Sun Java development tools provided by
-java7-jdk-base to system-wide directories like /usr/bin, making
-Sun Java the default JDK.
+java7-jdk-base to system-wide directories like /usr/bin, making Sun
+Java the default JDK.
 
 %description -l pl.UTF-8
 Ten pakiet tworzy symboliczne dowiązania do narzędzi programistycznych
@@ -169,8 +169,8 @@ Obsoletes:	jre
 
 %description jre
 This package symlinks Sun Java runtime environment tools provided by
-java7-jre-base to system-wide directories like /usr/bin, making
-Sun Java the default JRE.
+java7-jre-base to system-wide directories like /usr/bin, making Sun
+Java the default JRE.
 
 %description jre -l pl.UTF-8
 Ten pakiet tworzy symboliczne dowiązania do narzędzi środowiska
@@ -324,14 +324,14 @@ Obsoletes:	java-mozilla-plugin
 Obsoletes:	jre-mozilla-plugin
 Obsoletes:	mozilla-firefox-plugin-gcc2-java
 Obsoletes:	mozilla-firefox-plugin-gcc3-java
-Obsoletes:	mozilla-firefox-plugin-java-blackdown
 Obsoletes:	mozilla-firefox-plugin-java
+Obsoletes:	mozilla-firefox-plugin-java-blackdown
 Obsoletes:	mozilla-plugin-blackdown-java-sdk
 Obsoletes:	mozilla-plugin-gcc2-java
 Obsoletes:	mozilla-plugin-gcc3-java
 Obsoletes:	mozilla-plugin-gcc32-java
-Obsoletes:	mozilla-plugin-java-blackdown
 Obsoletes:	mozilla-plugin-java
+Obsoletes:	mozilla-plugin-java-blackdown
 
 %description -n browser-plugin-%{name}
 Java plugin for WWW browsers.
@@ -357,14 +357,14 @@ Obsoletes:	java-mozilla-plugin
 Obsoletes:	jre-mozilla-plugin
 Obsoletes:	mozilla-firefox-plugin-gcc2-java
 Obsoletes:	mozilla-firefox-plugin-gcc3-java
-Obsoletes:	mozilla-firefox-plugin-java-blackdown
 Obsoletes:	mozilla-firefox-plugin-java
+Obsoletes:	mozilla-firefox-plugin-java-blackdown
 Obsoletes:	mozilla-plugin-blackdown-java-sdk
 Obsoletes:	mozilla-plugin-gcc2-java
 Obsoletes:	mozilla-plugin-gcc3-java
 Obsoletes:	mozilla-plugin-gcc32-java
-Obsoletes:	mozilla-plugin-java-blackdown
 Obsoletes:	mozilla-plugin-java
+Obsoletes:	mozilla-plugin-java-blackdown
 
 %description -n browser-plugin-%{name}-ng
 Next-Generation Java plugin for WWW browsers. Works only with
@@ -513,15 +513,15 @@ ln -sf %{jredir}/lib/javaws.jar $RPM_BUILD_ROOT%{jvmjardir}/javaws.jar
 # leave all locale files unchanged in the original location (license
 # restrictions) and only link them at the proper locations
 for loc in $(ls $RPM_BUILD_ROOT%{jredir}/lib/locale); do
-	install -d $RPM_BUILD_ROOT%{_datadir}/locale/$loc/LC_MESSAGES
+	install -d $RPM_BUILD_ROOT%{_localedir}/$loc/LC_MESSAGES
 	ln -sf %{jredir}/lib/locale/$loc/LC_MESSAGES/sunw_java_plugin.mo \
-		$RPM_BUILD_ROOT%{_datadir}/locale/$loc/LC_MESSAGES
+		$RPM_BUILD_ROOT%{_localedir}/$loc/LC_MESSAGES
 done
 
 # standardize dir names
-mv -f $RPM_BUILD_ROOT%{_datadir}/locale/{zh,zh_CN}
-mv -f $RPM_BUILD_ROOT%{_datadir}/locale/{zh_HK.BIG5HK,zh_HK}
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/{ko.UTF-8,zh.GBK,zh_TW.BIG5}
+mv -f $RPM_BUILD_ROOT%{_localedir}/{zh,zh_CN}
+mv -f $RPM_BUILD_ROOT%{_localedir}/{zh_HK.BIG5HK,zh_HK}
+rm -rf $RPM_BUILD_ROOT%{_localedir}/{ko.UTF-8,zh.GBK,zh_TW.BIG5}
 
 cp -a src.zip $RPM_BUILD_ROOT%{_prefix}/src/%{name}-sources
 
@@ -914,17 +914,17 @@ fi
 %lang(ja) %{_mandir}/ja/man1/policytool.1*
 %{_mandir}/man1/javaws.1*
 %lang(ja) %{_mandir}/ja/man1/javaws.1*
-%lang(de) %{_datadir}/locale/de/LC_MESSAGES/sunw_java_plugin.mo
-%lang(es) %{_datadir}/locale/es/LC_MESSAGES/sunw_java_plugin.mo
-%lang(fr) %{_datadir}/locale/fr/LC_MESSAGES/sunw_java_plugin.mo
-%lang(it) %{_datadir}/locale/it/LC_MESSAGES/sunw_java_plugin.mo
-%lang(ja) %{_datadir}/locale/ja/LC_MESSAGES/sunw_java_plugin.mo
-%lang(ko) %{_datadir}/locale/ko/LC_MESSAGES/sunw_java_plugin.mo
-%lang(pt_BR) %{_datadir}/locale/pt_BR/LC_MESSAGES/sunw_java_plugin.mo
-%lang(sv) %{_datadir}/locale/sv/LC_MESSAGES/sunw_java_plugin.mo
-%lang(zh_HK) %{_datadir}/locale/zh_HK/LC_MESSAGES/sunw_java_plugin.mo
-%lang(zh_CN) %{_datadir}/locale/zh_CN/LC_MESSAGES/sunw_java_plugin.mo
-%lang(zh_TW) %{_datadir}/locale/zh_TW/LC_MESSAGES/sunw_java_plugin.mo
+%lang(de) %{_localedir}/de/LC_MESSAGES/sunw_java_plugin.mo
+%lang(es) %{_localedir}/es/LC_MESSAGES/sunw_java_plugin.mo
+%lang(fr) %{_localedir}/fr/LC_MESSAGES/sunw_java_plugin.mo
+%lang(it) %{_localedir}/it/LC_MESSAGES/sunw_java_plugin.mo
+%lang(ja) %{_localedir}/ja/LC_MESSAGES/sunw_java_plugin.mo
+%lang(ko) %{_localedir}/ko/LC_MESSAGES/sunw_java_plugin.mo
+%lang(pt_BR) %{_localedir}/pt_BR/LC_MESSAGES/sunw_java_plugin.mo
+%lang(sv) %{_localedir}/sv/LC_MESSAGES/sunw_java_plugin.mo
+%lang(zh_HK) %{_localedir}/zh_HK/LC_MESSAGES/sunw_java_plugin.mo
+%lang(zh_CN) %{_localedir}/zh_CN/LC_MESSAGES/sunw_java_plugin.mo
+%lang(zh_TW) %{_localedir}/zh_TW/LC_MESSAGES/sunw_java_plugin.mo
 
 %files jre-base-X11
 %defattr(644,root,root,755)
