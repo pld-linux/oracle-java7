@@ -317,7 +317,7 @@ Provides:	java-mozilla-plugin
 Provides:	mozilla-firefox-plugin-java
 Provides:	mozilla-plugin-java
 Obsoletes:	blackdown-java-sdk-mozilla-plugin
-Obsoletes:	browser-plugin-java-ng
+Obsoletes:	browser-plugin-java-sun-ng
 Obsoletes:	java-blackdown-mozilla-plugin
 Obsoletes:	java-moz-plugin
 Obsoletes:	java-mozilla-plugin
