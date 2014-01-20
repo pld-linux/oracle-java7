@@ -15,16 +15,16 @@
 
 # disable file duplicate packaging error
 %define		_duplicate_files_terminate_build   0
-%define		src_ver	7u45
-%define		sub_ver	b45
+%define		src_ver	7u51
+%define		sub_ver	b13
 %define		dir_ver	%(echo %{version} | sed 's/\\.\\(..\\)$/_\\1/')
 # class data version seen with file(1) that this jvm is able to load
 %define		_classdataversion 51.0
 Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
-Version:	1.7.0.45
-Release:	3
+Version:	1.7.0.51
+Release:	1
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
 # See "LICENSE TO DISTRIBUTE SOFTWARE" section, which states you can
@@ -33,9 +33,9 @@ Group:		Development/Languages/Java
 # Download URL (requires JavaScript and interactive license agreement):
 # http://www.oracle.com/technetwork/java/javase/downloads/index.html
 Source0:	jdk-%{src_ver}-linux-i586.tar.gz
-# Source0-md5:	66b47e77d963c5dd652f0c5d3b03cb52
+# Source0-md5:	909d353c1caf6b3b54cc20767a7778ef
 Source1:	jdk-%{src_ver}-linux-x64.tar.gz
-# Source1-md5:	bea330fcbcff77d31878f21753e09b30
+# Source1-md5:	764f96c4b078b80adaa5983e75470ff2
 Source2:	Test.java
 Source3:	Test.class
 Patch0:		%{name}-desktop.patch
@@ -385,6 +385,19 @@ Sources for the standard Java library.
 %description sources -l pl.UTF-8
 Źródła standardowej bilioteki Java.
 
+%package missioncontrol
+Summary:	Java Mission Control tool
+Summary(pl.UTF-8):	Narzędzie Java Mission Control
+Group:		Development/Languages/Java
+Requires:	%{name}-jdk-base = %{version}-%{release}
+Requires:	xulrunner-libs
+
+%description missioncontrol
+This package contains Java Mission Control tool.
+
+%description missioncontrol -l pl.UTF-8
+Ten pakiet zawiera narzędzie Java Mission Control.
+
 %prep
 %ifarch %{ix86}
 %setup -q -T -b 0 -n jdk%{dir_ver}
@@ -452,7 +465,7 @@ for i in java keytool orbd policytool \
 done
 
 for i in appletviewer extcheck idlj jar jarsigner \
-	javac javadoc javafxpackager javah javap jcmd jconsole jdb jhat jinfo jmap jps \
+	javac javadoc javafxpackager javah javap jcmd jconsole jdb jhat jinfo jmap jmc jps \
 	jrunscript jsadebugd jstack jstat jstatd native2ascii rmic serialver \
 	jvisualvm schemagen wsgen wsimport xjc apt; do
 	[ -f $RPM_BUILD_ROOT%{javadir}/bin/$i ] || exit 1
@@ -595,6 +608,16 @@ fixrpath() {
 }
 
 fixrpath
+
+# Java Mission Control segfaults with recent versions of webkit (see
+# https://bugs.eclipse.org/bugs/show_bug.cgi?id=404776 for details.
+# Workaround with xulrunner provided until working version is
+# delivered.
+cat <<EOF >> $RPM_BUILD_ROOT%{javadir}/bin/jmc.ini
+-Dorg.eclipse.swt.browser.DefaultType=mozilla
+-Dorg.eclipse.swt.browser.XULRunnerPath=%{_libdir}/xulrunner/
+EOF
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -1044,3 +1067,12 @@ fi
 %defattr(644,root,root,755)
 %dir %{_prefix}/src/%{name}-sources
 %{_prefix}/src/%{name}-sources/src.zip
+
+%files missioncontrol
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/jmc
+%attr(755,root,root) %{javadir}/bin/jmc
+%{javadir}/bin/jmc.ini
+%{javadir}/lib/missioncontrol
+%{_mandir}/man1/jmc.1*
+%lang(ja) %{_mandir}/ja/man1/jmc.1*
