@@ -739,9 +739,7 @@ fi
 %files jdk-base
 %defattr(644,root,root,755)
 %{_jvmdir}/java7
-%ifarch %{ix86}
 %attr(755,root,root) %{javadir}/bin/java-rmi.cgi
-%endif
 %attr(755,root,root) %{javadir}/bin/apt
 %attr(755,root,root) %{javadir}/bin/extcheck
 %attr(755,root,root) %{javadir}/bin/idlj
