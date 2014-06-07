@@ -1071,6 +1071,9 @@ fi
 %attr(755,root,root) %{_bindir}/jmc
 %attr(755,root,root) %{javadir}/bin/jmc
 %{javadir}/bin/jmc.ini
+%dir %{jredir}/lib/jfr
+%{jredir}/lib/jfr/default.jfc
+%{jredir}/lib/jfr/profile.jfc
 %{javadir}/lib/missioncontrol
 %{_mandir}/man1/jmc.1*
 %lang(ja) %{_mandir}/ja/man1/jmc.1*
