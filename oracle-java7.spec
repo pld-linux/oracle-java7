@@ -390,7 +390,6 @@ Summary:	Java Mission Control tool
 Summary(pl.UTF-8):	Narzędzie Java Mission Control
 Group:		Development/Languages/Java
 Requires:	%{name}-jdk-base = %{version}-%{release}
-Requires:	xulrunner-libs
 
 %description missioncontrol
 This package contains Java Mission Control tool.
@@ -608,16 +607,6 @@ fixrpath() {
 }
 
 fixrpath
-
-# Java Mission Control segfaults with recent versions of webkit (see
-# https://bugs.eclipse.org/bugs/show_bug.cgi?id=404776 for details.
-# Workaround with xulrunner provided until working version is
-# delivered.
-cat <<EOF >> $RPM_BUILD_ROOT%{javadir}/bin/jmc.ini
--Dorg.eclipse.swt.browser.DefaultType=mozilla
--Dorg.eclipse.swt.browser.XULRunnerPath=%{_libdir}/xulrunner/
-EOF
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
