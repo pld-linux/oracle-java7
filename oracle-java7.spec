@@ -38,6 +38,9 @@ Source1:	jdk-%{src_ver}-linux-x64.tar.gz
 # Source1-md5:	cfa44b49e50ea06e5c6ab95ff79e5b2a
 Source2:	Test.java
 Source3:	Test.class
+# http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html
+Source4:	UnlimitedJCEPolicyJDK7.zip
+# Source4-md5:	c47e997b90ddfd0d813a37ccc97fb933
 Patch0:		%{name}-desktop.patch
 URL:		http://www.oracle.com/technetwork/java/javase/overview/index.html
 BuildRequires:	rpm >= 4.4.9-56
@@ -399,10 +402,10 @@ Ten pakiet zawiera narzędzie Java Mission Control.
 
 %prep
 %ifarch %{ix86}
-%setup -q -T -b 0 -n jdk%{dir_ver}
+%setup -q -T -b 0 -a4 -n jdk%{dir_ver}
 %endif
 %ifarch %{x8664}
-%setup -q -T -b 1 -n jdk%{dir_ver}
+%setup -q -T -b 1 -a4 -n jdk%{dir_ver}
 %endif
 
 # patch only copy of the desktop file, leave original unchanged
@@ -521,6 +524,9 @@ done
 
 install -d $RPM_BUILD_ROOT%{jredir}/javaws
 ln -sf %{jredir}/lib/javaws.jar $RPM_BUILD_ROOT%{jvmjardir}/javaws.jar
+
+# unrestricted crypto
+cp -a UnlimitedJCEPolicy/*.jar $RPM_BUILD_ROOT%{jredir}/lib/security
 
 # leave all locale files unchanged in the original location (license
 # restrictions) and only link them at the proper locations
