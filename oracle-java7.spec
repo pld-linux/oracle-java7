@@ -551,19 +551,19 @@ ln -s java7-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/java
 ln -s java7-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/jre
 ln -s java7-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/jsse
 
-# ugly hack for fxavcodecplugin-55.so
-if [ -e $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so ]; then
-	echo "fxavcodecplugin-55.so already exists, no need for hack" >&2
+# ugly hack for fxavcodecplugin-56.so
+if [ -e $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so ]; then
+	echo "fxavcodecplugin-56.so already exists, no need for hack" >&2
 	exit 1
 fi
 cp -a $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-53.so \
-	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
-perl -pi -e 's#.so.53#.so.55#g' \
-	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
-perl -pi -e 's#LIBAVFORMAT_53#LIBAVFORMAT_55#g' \
-	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
-perl -pi -e 's#LIBAVCODEC_53#LIBAVCODEC_55#g' \
-	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-55.so
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
+perl -pi -e 's#.so.53#.so.56#g' \
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
+perl -pi -e 's#LIBAVFORMAT_53#LIBAVFORMAT_56#g' \
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
+perl -pi -e 's#LIBAVCODEC_53#LIBAVCODEC_56#g' \
+	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
 rm $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-52.so
 rm $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-53.so
 
@@ -977,7 +977,7 @@ fi
 
 %files javafx
 %defattr(644,root,root,755)
-%attr(755,root,root) %{jredir}/lib/%{arch}/fxavcodecplugin-55.so
+%attr(755,root,root) %{jredir}/lib/%{arch}/fxavcodecplugin-56.so
 %attr(755,root,root) %{jredir}/lib/%{arch}/fxplugins.so
 %attr(755,root,root) %{jredir}/lib/%{arch}/libglass.so
 %attr(755,root,root) %{jredir}/lib/%{arch}/libgstplugins-lite.so
