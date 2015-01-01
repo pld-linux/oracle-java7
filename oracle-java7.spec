@@ -145,28 +145,8 @@ Requires:	%{name}-tools = %{version}-%{release}
 Requires:	jpackage-utils >= 0:1.7.5-4
 Suggests:	%{name}-jre-X11
 Provides:	java
-Provides:	java(ClassDataVersion) = %{_classdataversion}
-Provides:	java(jaas) = %{version}
-Provides:	java(jaf) = 1.1.1
-Provides:	java(jaxp) = 1.3
-Provides:	java(jaxp_parser_impl)
-Provides:	java(jce) = %{version}
-Provides:	java(jdbc-stdext) = %{version}
-Provides:	java(jdbc-stdext) = 3.0
-Provides:	java(jmx) = 1.4
-Provides:	java(jndi) = %{version}
-Provides:	java(jsse) = %{version}
 Provides:	java1.4
 Provides:	jre = %{version}
-Obsoletes:	java(jaas)
-Obsoletes:	java(jaf)
-Obsoletes:	java(jaxp)
-Obsoletes:	java(jce)
-Obsoletes:	java(jdbc-stdext)
-Obsoletes:	java(jdbc-stdext)
-Obsoletes:	java(jmx)
-Obsoletes:	java(jndi)
-Obsoletes:	java(jsse)
 Obsoletes:	java-blackdown-jre
 Obsoletes:	jre
 
@@ -187,6 +167,17 @@ Summary:	Oracle JRE (Java Runtime Environment) for Linux
 Summary(pl.UTF-8):	Oracle JRE - środowisko uruchomieniowe Javy dla Linuksa
 Group:		Development/Languages/Java
 Requires:	jpackage-utils >= 0:1.7.5-4
+Provides:	java(ClassDataVersion) = %{_classdataversion}
+Provides:	java(jaas) = %{version}
+Provides:	java(jaf) = 1.1.1
+Provides:	java(jaxp) = 1.3
+Provides:	java(jaxp_parser_impl)
+Provides:	java(jce) = %{version}
+Provides:	java(jdbc-stdext) = %{version}
+Provides:	java(jdbc-stdext) = 3.0
+Provides:	java(jmx) = 1.4
+Provides:	java(jndi) = %{version}
+Provides:	java(jsse) = %{version}
 Provides:	jre(%{name})
 
 %description jre-base
@@ -206,6 +197,7 @@ Requires:	%{name}-jre-base = %{version}-%{release}
 Requires:	%{name}-jre-base-X11 = %{version}-%{release}
 Provides:	javaws = %{version}
 Provides:	jre-X11 = %{version}
+Obsoletes:	jre-X11
 
 %description jre-X11
 This package symlinks Oracle Java X11 libraries provided by
