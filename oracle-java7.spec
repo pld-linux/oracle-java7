@@ -46,6 +46,7 @@ URL:		http://www.oracle.com/technetwork/java/javase/overview/index.html
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-build >= 4.3-0.20040107.21
 BuildRequires:	rpmbuild(macros) >= 1.453
+BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 Requires:	%{name}-jdk-base = %{version}-%{release}
 Requires:	%{name}-jre = %{version}-%{release}
@@ -548,14 +549,13 @@ if [ -e $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so ]; then
 	echo "fxavcodecplugin-56.so already exists, no need for hack" >&2
 	exit 1
 fi
-cp -a $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-53.so \
+cp -p $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-53.so \
 	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
-perl -pi -e 's#.so.53#.so.56#g' \
-	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
-perl -pi -e 's#LIBAVFORMAT_53#LIBAVFORMAT_56#g' \
-	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
-perl -pi -e 's#LIBAVCODEC_53#LIBAVCODEC_56#g' \
-	$RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
+%{__sed} -i -e '
+	s#\.so\.53#.so.56#g
+	s#LIBAVFORMAT_53#LIBAVFORMAT_56#g
+	s#LIBAVCODEC_53#LIBAVCODEC_56#g
+' $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-56.so
 rm $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-52.so
 rm $RPM_BUILD_ROOT%{jredir}/lib/%{arch}/fxavcodecplugin-53.so
 
