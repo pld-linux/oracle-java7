@@ -15,15 +15,15 @@
 
 # disable file duplicate packaging error
 %define		_duplicate_files_terminate_build   0
-%define		src_ver	7u72
-%define		sub_ver	b14
+%define		src_ver	7u76
+%define		sub_ver	b13
 %define		dir_ver	%(echo %{version} | sed 's/\\.\\(..\\)$/_\\1/')
 # class data version seen with file(1) that this jvm is able to load
 %define		_classdataversion 51.0
 Summary:	Oracle JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Oracle JDK - środowisko programistyczne Javy dla Linuksa
 Name:		oracle-java7
-Version:	1.7.0.72
+Version:	1.7.0.76
 Release:	1
 License:	restricted, distributable
 # http://www.oracle.com/technetwork/java/javase/terms/license/index.html
@@ -33,9 +33,9 @@ Group:		Development/Languages/Java
 # Download URL (requires JavaScript and interactive license agreement):
 # http://www.oracle.com/technetwork/java/javase/downloads/index.html
 Source0:	jdk-%{src_ver}-linux-i586.tar.gz
-# Source0-md5:	4a942a47a700e63e050dd66e8ca08a1f
+# Source0-md5:	566dcbcedbb9ec5a26f08bd65b14746b
 Source1:	jdk-%{src_ver}-linux-x64.tar.gz
-# Source1-md5:	cfa44b49e50ea06e5c6ab95ff79e5b2a
+# Source1-md5:	5a98b1a3e4c48363d03f664f173bbb9a
 Source2:	Test.java
 Source3:	Test.class
 # http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html
