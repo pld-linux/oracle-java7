@@ -32,14 +32,14 @@ License:	restricted, distributable
 Group:		Development/Languages/Java
 # Download URL (requires JavaScript and interactive license agreement):
 # http://www.oracle.com/technetwork/java/javase/downloads/index.html
-Source0:	jdk-%{src_ver}-linux-i586.tar.gz
+Source0:	http://download.oracle.com/otn-pub/java/jdk/%{src_ver}-%{sub_ver}/jdk-%{src_ver}-linux-i586.tar.gz
 # Source0-md5:	0811a4045714bd8f1e1577e318528597
-Source1:	jdk-%{src_ver}-linux-x64.tar.gz
+Source1:	http://download.oracle.com/otn-pub/java/jdk/%{src_ver}-%{sub_ver}/jdk-%{src_ver}-linux-x64.tar.gz
 # Source1-md5:	6152f8a7561acf795ca4701daa10a965
 Source2:	Test.java
 Source3:	Test.class
 # http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html
-Source4:	UnlimitedJCEPolicyJDK7.zip
+Source4:	http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip
 # Source4-md5:	c47e997b90ddfd0d813a37ccc97fb933
 Patch0:		%{name}-desktop.patch
 URL:		http://www.oracle.com/technetwork/java/javase/overview/index.html
