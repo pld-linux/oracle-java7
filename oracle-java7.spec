@@ -1,8 +1,7 @@
 # NOTE
-#  - TODO: unpacked files
-#  - early access packages downloadable: http://jdk6.java.net/download.html
-#  - sample/demo available as separate download, licensesd with Oracle BSD license
+#  - sample/demo available as separate download, licensed with Oracle BSD license
 #
+#  - TODO: duplicate packaging of:
 #       /usr/lib/jvm/java7-1.7.0.11/jre/lib/i386/libjavaplugin_jni.so
 #       /usr/lib/jvm/java7-1.7.0.11/jre/lib/i386/libjavaplugin_nscp.so
 #       /usr/lib/jvm/java7-1.7.0.11/jre/lib/i386/libjavaplugin_nscp_gcc29.so
@@ -50,7 +49,6 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
 Requires:	%{name}-jdk-base = %{version}-%{release}
 Requires:	%{name}-jre = %{version}-%{release}
-Requires:	%{name}-jre-base = %{version}-%{release}
 Provides:	j2sdk = %{version}
 Provides:	jdk = %{version}
 Obsoletes:	blackdown-java-sdk
@@ -238,7 +236,8 @@ JRE module for ALSA sound support.
 Moduł JRE do obsługi dźwięku poprzez ALSA.
 
 %package javafx
-Summary:	Oracle JRE (Java Runtime Environment) for Linux - JavaFX runtime binaries
+Summary:	Oracle JRE for Linux - JavaFX runtime binaries
+Summary(pl.UTF-8):	Oracle JRE dla Linuksa - binaria uruchomieniowe JavaFX
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
 
@@ -250,6 +249,15 @@ applications. With JavaFX, developers can preserve existing
 investments by reusing Java libraries in their applications. They can
 even access native system capabilities, or seamlessly connect to
 server-based middleware applications.
+
+%description javafx -l pl.UTF-8
+JavaFX to kolejny krok ewolucji Javy jako bogatej platformy
+klienckiej. Jest zaprojektowana jako lekka, akcelerowana sprzętowo
+platforma interfejsu użytkownika Javy dla aplikacji biznesowych. Przy
+pomocy JavaFX programiści mogą zachować istniejące nakłady poprzez
+ponowne używanie bibliotek Javy w aplikacjach. Mogą także mieć dostęp
+do natywnych możliwości systemu lub w sposób przezroczysty łączyć się
+z aplikacjami middleware opartymi na serwerach.
 
 %package visualvm
 Summary:	VisualVM - a tool to monitor and troubleshoot Java applications
@@ -761,7 +769,6 @@ fi
 %attr(755,root,root) %{javadir}/bin/wsimport
 %attr(755,root,root) %{javadir}/bin/xjc
 %{javadir}/include
-%dir %{javadir}/lib
 %attr(755,root,root) %{javadir}/lib/jexec
 %{javadir}/lib/ct.sym
 %{javadir}/lib/*.jar
@@ -844,6 +851,7 @@ fi
 %dir %{jredir}/lib/%{arch}/client
 %attr(755,root,root) %{jredir}/lib/%{arch}/client/*
 %endif
+%dir %{javadir}/lib
 %dir %{javadir}/lib/%{arch}
 %dir %{javadir}/lib/%{arch}/jli
 %attr(755,root,root) %{javadir}/lib/%{arch}/jli/libjli.so
@@ -957,6 +965,7 @@ fi
 %lang(it) %{jredir}/lib/locale/it
 %lang(ja) %{jredir}/lib/locale/ja
 %lang(ko) %{jredir}/lib/locale/ko*
+%lang(pt_BR) %{jredir}/lib/locale/pt_BR
 %lang(sv) %{jredir}/lib/locale/sv
 %lang(zh_CN) %{jredir}/lib/locale/zh
 %lang(zh_CN) %{jredir}/lib/locale/zh.*
